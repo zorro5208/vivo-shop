@@ -1,4 +1,4 @@
-# hello-world
+# vivo-shop
 
 ## Project setup
 ```
