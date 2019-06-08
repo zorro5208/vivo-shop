@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   	<!--头部-->
-		<mt-header title='vivo' style="background: #000000;">
+		<mt-header fixed title='vivo' style="background: #000000;font-size:20px;height:50px">
 			<router-link to="/" slot="left">
 				<mt-button icon="search"></mt-button>
 		  </router-link>
@@ -50,44 +50,6 @@
 	},
 }</script>
 
-<style scoped>
-	@import "../../public/iconfont/iconfont.css";</style>
-<style scoped>
-	/*#footer {
-	position: fixed;
-	bottom: 0;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 60px;
-	background: white;
-	border-top: 1px solid #CCCCCC;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
-#footer .box {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.active {
-	color: #5FB878;
-}
-
-#footer span {
-	text-decoration: none;
-	font-weight: bold;
-}
-.router-fade-enter-active,
-.router-fade-leave-active {
-    transition: opacity 0.1s;
-}
-.router-fade-enter,
-.router-fade-leave-active {
-    opacity: 0;
-}*/
+<style>
+	*{padding: 0;margin: 0;}
 </style>
