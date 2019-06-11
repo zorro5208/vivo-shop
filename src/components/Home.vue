@@ -3,7 +3,7 @@
     <!--头部-->
     <div class="head" v-if="isShowHeader">
 		<mt-header fixed :title="isTitle" style="background: #000000;font-size:20px;height:50px">
-		<router-link to="/" slot="left">
+		<router-link to="javascript:window.history.back();" slot="left">
 			<mt-button icon="back"></mt-button>
 		</router-link>
 		<router-link to="/search" slot="right">

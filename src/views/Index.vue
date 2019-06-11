@@ -68,7 +68,9 @@
           <p><span id="price">￥{{shop.Price}}</span></p>
         </li>
       </ul>
-	  <p class="more"><a href="#">更多精品手机></a></p>
+	  <p class="more" >
+      <a href="##" @click="loadMore">更多精品手机></a>
+    </p>
 	<!-- 精品配件 -->
       <h5><span>-精品配件-</span></h5>
       <ul>
@@ -104,6 +106,10 @@ export default {
     this.$store.state.isTitle = 'vivo';
   },
   methods: {
+    loadMore(){
+      this.getGoodsList();
+      console.log(121);
+    },
     async getTypeList() {
       const { g, p } = axios;
       const data = await g({

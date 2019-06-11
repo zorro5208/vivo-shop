@@ -7,8 +7,6 @@ import router from './router'
 import './assets/mui/css/mui.min.css'
 import './assets/mui/css/icons-extra.css'
 
-//import mui from './assets/js/mui.js'
-//Vue.prototype.mui=mui;
 Vue.use(MintUI)
 Vue.config.productionTip = false
 
