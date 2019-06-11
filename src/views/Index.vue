@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <div class="guarantees"></div>
+    <section class="guarantees"></section>
     <!--轮播图-->
     <div id="banner">
       <mt-swipe :auto="3000">
@@ -41,9 +41,9 @@
         >
       </p>
       <ul>
-        <li v-for="(shop,index) in goodslist[0].goodslist0" :key="index">
+        <li v-for="(shop,index) in goodslist[0]" :key="index">
           <a href="#">
-            <img :src="shop.ImageOne">
+            <img v-lazy="shop.ImageOne">
           </a>
           <p>{{shop.name}}</p>
 		  <p><span class="nametwo">{{shop.nametwo}}</span></p>
@@ -59,9 +59,9 @@
         >
       </p>
       <ul>
-        <li v-for="(shop,index) in goodslist[1].goodslist1" :key="index">
+        <li v-for="(shop,index) in goodslist[1]" :key="index">
           <a href="#">
-            <img :src="shop.ImageOne">
+            <img v-lazy="shop.ImageOne">
           </a>
           <p>{{shop.name}}</p>
 		  <p><span class="nametwo">{{shop.nametwo}}</span></p>
@@ -72,9 +72,9 @@
 	<!-- 精品配件 -->
       <h5><span>-精品配件-</span></h5>
       <ul>
-        <li v-for="(shop,index) in goodslist[2].goodslist2" :key="index">
+        <li v-for="(shop,index) in goodslist[2]" :key="index">
           <a href="#">
-            <img :src="shop.homeImg">
+            <img v-lazy="shop.homeImg">
           </a>
           <p>{{shop.homeName}}</p>
           <p><span id="price">￥{{shop.homePrice}}</span></p>
@@ -99,6 +99,9 @@ export default {
     // 第一次请求
     this.getGoodsList();
     this.getTypeList();
+    this.$store.state.isShowHeader = true;
+    this.$store.state.isShowFooter = true;
+    this.$store.state.isTitle = 'vivo';
   },
   methods: {
     async getTypeList() {
@@ -117,18 +120,22 @@ export default {
         url:
           "https://www.easy-mock.com/mock/5cf7b57bd166d82961e57e79/example/goodsdata"
       });
-      console.log(data2.data.data);
+      // console.log(data2.data.data);
       //热卖专区
-      const goodslist0 = data2.data.data.phone.lower[2].lower_data;
+      var goodslist0 = data2.data.data.phone.lower[2].lower_data;
+      // console.log(goodslist0);
       //精品手机
-      const goodslist1 = data2.data.data.phone.lower[0].lower_data;
+      var goodslist1 = data2.data.data.phone.lower[0].lower_data;
       //精品配件
-      const goodslist2 = data2.data.data.set;
- console.log(goodslist2);
-      this.goodslist = [{ goodslist0 }, { goodslist1 }, { goodslist2 }];
-     
+      var goodslist2 = data2.data.data.set;
+
+      this.goodslist.push(goodslist0);
+      this.goodslist.push(goodslist1);
+      this.goodslist.push(goodslist2);
+      // console.log(this.goodslist)
     }
-  }
+  },
+ 
 };
 </script>
 
@@ -136,6 +143,11 @@ export default {
 *{
   padding: 0;
   margin: 0;
+}
+img[lazy=loading] {
+  height: 105px;
+  width: 65%;
+  margin: auto;
 }
 #main {
   overflow: hidden;

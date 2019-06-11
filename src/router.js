@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from './views/Index.vue'
+import Search from './components/Search.vue'
 import Classify from './views/Classify.vue'
-import phone from './views/classify/phone.vue'
-import computer from './views/classify/computer.vue'
+import Detail from './views/detail.vue'
 import Cart from './views/Cart.vue'
 Vue.use(VueRouter)
 
@@ -24,9 +24,9 @@ const routes = [
 //		  		{ path: 'computer/:id', component: computer }
 //		  ]
 	},
-	{ path: '/phone/:id', component: phone },
-	{ path: '/computer/:id', component: computer },
-  { path: '/cart', component: Cart }
+	{ path: '/cart', component: Cart },
+	{ path: '/search', component: Search },
+	{ path: '/detail', component: Detail }
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置
