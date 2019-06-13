@@ -54,33 +54,6 @@ export default {
 	@import "../public/iconfont/iconfont.css";
 </style>
 <style scoped>
-	#footer{
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: 0;
-		padding: 0;
-		width: 100%;
-		height: 60px;
-		background: white;
-		border-top:1px solid #CCCCCC ;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-	}
-	#footer .box{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-	.active{
-		color: #5FB878;
-	}
-	#footer span{
-		text-decoration: none;
-		font-weight: bold;
-	}
+	
 	
 </style>

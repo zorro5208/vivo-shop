@@ -5,6 +5,6 @@ export default new Vuex.Store({
     state: {
         isShowHeader: true,
         isShowFooter: true,
-        isTitle:'vivo'
+        isTitle:'vivo',
     },
 })

@@ -6,7 +6,9 @@ import store from './store'
 import router from './router'
 import './assets/mui/css/mui.min.css'
 import './assets/mui/css/icons-extra.css'
+import LyTab from 'ly-tab'
 
+Vue.use(LyTab)
 Vue.use(MintUI)
 Vue.config.productionTip = false
 

@@ -5,35 +5,87 @@
     <div id="banner">
       <mt-swipe :auto="3000">
         <mt-swipe-item>
-          <img class="img01" src="../assets/banner_1.jpg">
+          <img
+            class="img01"
+            src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20190604/20190604234033233369_original.jpg"
+          >
         </mt-swipe-item>
         <mt-swipe-item>
-          <img class="img01" src="../assets/banner_2.jpg">
+          <img
+            class="img01"
+            src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20190610/20190610204800744512_original.jpg"
+          >
         </mt-swipe-item>
         <mt-swipe-item>
-          <img class="img01" src="../assets/banner_3.jpg">
+          <img
+            class="img01"
+            src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20190611/20190611100020515343_original.jpg"
+          >
         </mt-swipe-item>
         <mt-swipe-item>
-          <img class="img01" src="../assets/banner_4.jpg">
+          <img
+            class="img01"
+            src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20190608/2019060808472889631_original.jpg"
+          >
         </mt-swipe-item>
         <mt-swipe-item>
-          <img class="img01" src="../assets/banner_5.jpg">
+          <img
+            class="img01"
+            src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20190611/20190611152810795900_original.jpg"
+          >
         </mt-swipe-item>
       </mt-swipe>
     </div>
     <!--导航-->
     <div id="nav">
       <ul>
-        <li v-for="(good,index) in typeList" :key="index">
+        <li>
+          <router-link to='/list' tag='a'>
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200727214479_original.png">
+          </router-link>
+        </li>
+        <li>
           <a href="#">
-            <img :src="good.url">
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/201807022008414677_original.png">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200936862132_original.png">
+          </a>
+        </li>
+        <li>
+          <router-link to='/classify' tag='a'>
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201232196764_original.png">
+          </router-link>
+        </li>
+        <li>
+          <a href="#">
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201253660719_original.png">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201317652288_original.png">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201352559447_original.png">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/2018070220141024770_original.png">
           </a>
         </li>
       </ul>
     </div>
     <!--商品列表-->
     <div id="goods">
-      <h5><span>-热卖专区-</span></h5>
+      <h5>
+        <span>-热卖专区-</span>
+      </h5>
       <p>
         <img
           class="titleImg"
@@ -41,17 +93,23 @@
         >
       </p>
       <ul>
-        <li v-for="(shop,index) in goodslist[0]" :key="index">
+        <li v-for="(shop,index) in goodslist[0]" :key="index" @click="goDetails(shop.id)">
           <a href="#">
             <img v-lazy="shop.ImageOne">
           </a>
           <p>{{shop.name}}</p>
-		  <p><span class="nametwo">{{shop.nametwo}}</span></p>
-          <p><span id="price">￥{{shop.Price}}</span></p>
+          <p>
+            <span class="nametwo">{{shop.nametwo}}</span>
+          </p>
+          <p>
+            <span id="price">￥{{shop.Price}}</span>
+          </p>
         </li>
       </ul>
-	<!-- 精品手机 -->
-      <h5><span>-精品手机-</span></h5>
+      <!-- 精品手机 -->
+      <h5>
+        <span>-精品手机-</span>
+      </h5>
       <p>
         <img
           class="titleImg"
@@ -59,37 +117,49 @@
         >
       </p>
       <ul>
-        <li v-for="(shop,index) in goodslist[1]" :key="index">
+        <li v-for="(shop,index) in goodslist[1]" :key="index" @click="goDetails(shop.id)">
           <a href="#">
             <img v-lazy="shop.ImageOne">
           </a>
           <p>{{shop.name}}</p>
-		  <p><span class="nametwo">{{shop.nametwo}}</span></p>
-          <p><span id="price">￥{{shop.Price}}</span></p>
+          <p>
+            <span class="nametwo">{{shop.nametwo}}</span>
+          </p>
+          <p>
+            <span id="price">￥{{shop.Price}}</span>
+          </p>
         </li>
       </ul>
-	  <p class="more" >
-      <a href="##" @click="loadMore">更多精品手机></a>
-    </p>
-	<!-- 精品配件 -->
-      <h5><span>-精品配件-</span></h5>
+      <p class="more">
+        <router-link to="/list" tag="a">更多精品手机></router-link>
+      </p>
+      <!-- 精品配件 -->
+      <h5>
+        <span>-精品配件-</span>
+      </h5>
       <ul>
-        <li v-for="(shop,index) in goodslist[2]" :key="index">
+        <li v-for="(shop,index) in goodslist[2]" :key="index" @click="goDetails(shop.id)">
           <a href="#">
             <img v-lazy="shop.homeImg">
           </a>
           <p>{{shop.homeName}}</p>
-          <p><span id="price">￥{{shop.homePrice}}</span></p>
+          <p>
+            <span id="price">￥{{shop.homePrice}}</span>
+          </p>
         </li>
       </ul>
-	  <p class="more"><a href="#">更多精品配件></a></p>
+      <p class="more">
+        <a href="#">更多精品配件></a>
+      </p>
     </div>
+    <Top></Top>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import axios from "../lib/axios";
+import Top from "../components/go_top.vue";
 export default {
   data() {
     return {
@@ -100,26 +170,16 @@ export default {
   created() {
     // 第一次请求
     this.getGoodsList();
-    this.getTypeList();
     this.$store.state.isShowHeader = true;
     this.$store.state.isShowFooter = true;
-    this.$store.state.isTitle = 'vivo';
+    this.$store.state.isTitle = "vivo";
   },
   methods: {
-    loadMore(){
+    loadMore() {
       this.getGoodsList();
       console.log(121);
     },
-    async getTypeList() {
-      const { g, p } = axios;
-      const data = await g({
-        url:
-          "https://www.easy-mock.com/mock/5cf7b57bd166d82961e57e79/example/typedata"
-      });
-      //   console.log(data);
-      //导航图标信息
-      this.typeList = data.data.typeList;
-    },
+   
     async getGoodsList() {
       const { g, p } = axios;
       const data2 = await g({
@@ -139,18 +199,27 @@ export default {
       this.goodslist.push(goodslist1);
       this.goodslist.push(goodslist2);
       // console.log(this.goodslist)
+    },
+    goDetails(id) {
+      console.log(id);
+      this.$router.push({
+        path: "detail",
+        query: { id: id }
+      });
     }
   },
- 
+  components: {
+    Top
+  }
 };
 </script>
 
 <style>
-*{
+* {
   padding: 0;
   margin: 0;
 }
-img[lazy=loading] {
+img[lazy="loading"] {
   height: 105px;
   width: 65%;
   margin: auto;
@@ -168,11 +237,11 @@ img[lazy=loading] {
   background-size: 375px 28px;
 }
 #banner {
-  height: 230px;
+  height: 260px;
   width: 100%;
 }
 .img01 {
-  height: 230px;
+  height: 260px;
   width: 100%;
 }
 #nav {
@@ -215,16 +284,16 @@ img[lazy=loading] {
   height: 150px;
 }
 #goods h5 {
-	color: black;
-	font-size: 18px;
-	height: 45px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center
+  color: black;
+  font-size: 18px;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#goods p{
-	margin-bottom: 0px;
+#goods p {
+  margin-bottom: 0px;
 }
 #goods ul {
   background: white;
@@ -256,18 +325,18 @@ img[lazy=loading] {
 }
 #goods ul li #price {
   color: red;
-  font-size: 16px
+  font-size: 16px;
 }
-#goods ul li .nametwo{
-	font-size: 12px;
-	color: rgba(92, 91, 91, 0.884);
+#goods ul li .nametwo {
+  font-size: 12px;
+  color: rgba(92, 91, 91, 0.884);
 }
-#goods .more{
-	height: 35px;
-	background: white;
-	text-align: center;
+#goods .more {
+  height: 35px;
+  background: white;
+  text-align: center;
 }
-#goods .more a{
-	color: black;
+#goods .more a {
+  color: black;
 }
 </style>

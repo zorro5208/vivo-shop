@@ -5,6 +5,11 @@ import Search from './components/Search.vue'
 import Classify from './views/Classify.vue'
 import Detail from './views/detail.vue'
 import Cart from './views/Cart.vue'
+import My from './views/My.vue'
+import List from './views/list.vue'
+import choice from './components/register/choice.vue'
+import Register from './components/register/register.vue'
+import Login from './components/login/login.vue'
 Vue.use(VueRouter)
 
 
@@ -15,18 +20,16 @@ Vue.use(VueRouter)
 // 我们晚点再讨论嵌套路由。
 const routes = [
 	{ path: '/', redirect:'/index' },//redirect重定向
-  { path: '/index', component: Index },
-  { path: '/Classify', 
-		  component: Classify, 
-		  //路由嵌套
-//		  children:[
-//		  		{ path: 'phone/:id', component: phone },
-//		  		{ path: 'computer/:id', component: computer }
-//		  ]
-	},
+  	{ path: '/index', component: Index },
+  	{ path: '/Classify', component: Classify,},
 	{ path: '/cart', component: Cart },
+	{ path: '/my', component: My },
 	{ path: '/search', component: Search },
-	{ path: '/detail', component: Detail }
+	{ name:'detail' , path: '/detail', component: Detail },
+	{ path: '/list', component: List },
+	{ path: '/choice', component: choice },
+	{ name: 'register' , path: '/register', component: Register },
+	{ name: 'login' , path: '/login', component: Login },
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置

@@ -3,8 +3,8 @@
     <!--头部-->
     <div class="head" v-if="isShowHeader">
 		<mt-header fixed :title="isTitle" style="background: #000000;font-size:20px;height:50px">
-		<router-link to="javascript:window.history.back();" slot="left">
-			<mt-button icon="back"></mt-button>
+		<router-link to="" slot="left">
+			<mt-button icon="back" @click.native="prev"></mt-button>
 		</router-link>
 		<router-link to="/search" slot="right">
 			<mt-button icon="search" style="margin-right: 20px;"></mt-button>
@@ -38,7 +38,7 @@
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
-      <router-link to="/index1" tag="a" class="mui-tab-item">
+      <router-link to="/my" tag="a" class="mui-tab-item">
         <span class="mui-icon mui-icon-contact"></span>
         <span class="mui-tab-label">我的</span>
       </router-link>
@@ -61,6 +61,9 @@ export default {
     show() {
       this.isShow = !this.isShow;
     },
+    prev(){
+        this.$router.go(-1)
+    }
   },
   computed:{
     isShowHeader(){
