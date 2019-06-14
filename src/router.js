@@ -7,6 +7,7 @@ import Detail from './views/detail.vue'
 import Cart from './views/Cart.vue'
 import My from './views/My.vue'
 import List from './views/list.vue'
+import List2 from './views/list2.vue'
 import choice from './components/register/choice.vue'
 import Register from './components/register/register.vue'
 import Login from './components/login/login.vue'
@@ -27,6 +28,7 @@ const routes = [
 	{ path: '/search', component: Search },
 	{ name:'detail' , path: '/detail', component: Detail },
 	{ path: '/list', component: List },
+	{ path: '/list2', component: List2 },
 	{ path: '/choice', component: choice },
 	{ name: 'register' , path: '/register', component: Register },
 	{ name: 'login' , path: '/login', component: Login },

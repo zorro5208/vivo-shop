@@ -45,14 +45,14 @@
           </router-link>
         </li>
         <li>
-          <a href="#">
+          <router-link to='/list2' tag='a'>
             <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/201807022008414677_original.png">
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="#">
+          <router-link to='/list2' tag='a'>
             <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200936862132_original.png">
-          </a>
+          </router-link>
         </li>
         <li>
           <router-link to='/classify' tag='a'>

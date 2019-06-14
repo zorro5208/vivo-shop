@@ -22,9 +22,13 @@
           <div class="goodDetailValue">
             <div class="_Value">购买数量：</div>
             <div class="_cartNumber" style="margin-left: 2rem;">
-              <a href="javascript:;" @click="jian(index)" class="goodDetailReduce">-</a>
+              <a
+                href="javascript:;"
+                @click="goodDetail.homeValue>0?goodDetail.homeValue--:''"
+                class="goodDetailReduce"
+              >-</a>
               <input type="text" v-model="goodDetail.homeValue" readonly="readonly">
-              <a href="javascript:;" @click="jia(index)" class="goodDetailAdd">+</a>
+              <a href="javascript:;" @click="goodDetail.homeValue++" class="goodDetailAdd">+</a>
             </div>
           </div>
 
@@ -52,25 +56,14 @@
           <div class="goodDetailFooter">
             <div class="left">
               <div class="cart">
-                <div class="cartlength">{{cartlength}}</div>
+                <div class="cartlength">{{cartNum}}</div>
+                <router-link to='/cart'>
                 <span>购物车</span>
+                </router-link>
               </div>
               <div class="collection">
-                <div
-                  class="collection-box"
-                  @click="addCollection(goodDetail)"
-                  v-show="!$store.state.ces"
-                >
-                  <i class="iconfont icon-collection"></i>
+                <div class="collection-box">
                   <span>收藏</span>
-                </div>
-                <div
-                  class="collection-box"
-                  @click="addCollection(goodDetail)"
-                  v-show="$store.state.ces"
-                >
-                  <i class="iconfont icon-shoucangxuanzhong1" style="color:red"></i>
-                  <span style="color:red">取消</span>
                 </div>
               </div>
               <div class="shop">
@@ -79,10 +72,10 @@
             </div>
             <div class="rigth">
               <div class="add">
-                <a href="javascript:void(0);" @click="add(goodDetail)">加入购物车</a>
+                <a href="javascript:void(0);" @click="addCart(goodDetail)">加入购物车</a>
               </div>
               <div class="purchase">
-                <a href="javascript:void(0);" @click="pay(goodDetail.id,goodDetail.homeValue)">提交订单</a>
+                <a href="javascript:void(0);">提交订单</a>
               </div>
             </div>
           </div>
@@ -94,15 +87,20 @@
 <script>
 import Vue from "vue";
 import axios from "../lib/axios";
+import { Toast, Indicator } from "mint-ui";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   data() {
     return {
       isShow: false,
       goodDetails: [],
       selected: "tab-container1",
-      cartlength: 0
+      cartlength: 0,
+      carts: {},
+      cartNum:0
     };
   },
+ 
   methods: {
     show() {
       this.isShow = !this.isShow;
@@ -129,11 +127,32 @@ export default {
           this.goodDetails.push(data2.data.data.set[i]);
         }
       }
-    //   console.log(data);
+      // console.log(data);
+    },
+    // 点击按钮时，首先判断该商品是否在购物车已存在，如果存在则不再加入
+    addCart(data) {
+      this.carts = {
+          id: data.id,
+          name: data.homeName,
+          price: data.homePrice,
+          value: data.homeValue,
+          img: data.homeImg,
+          danx1uan: ""
+        };
+        this.cartNum = data.homeValue
+        this.$store.commit("setCart", this.carts);
+        // this.cartlength = this.$store.state.carts.length;
+        Toast({
+          message: "加入购物车成功！",
+          iconClass: "iconfont icon-goumaichenggong-copy",
+          duration: 950
+        });
+    
     }
   },
   created() {
     this.getgoodsList();
+    
     this.$store.state.isShowHeader = true;
     this.$store.state.isShowFooter = false;
     this.$store.state.isTitle = "商品详情";
@@ -141,7 +160,6 @@ export default {
 };
 </script>
 <style lang="stylus" >
-
 .peizhi {
   width: 90%;
   margin: auto;
@@ -232,6 +250,7 @@ export default {
   margin-top: 10px;
   box-sizing: border-box;
 }
+
 .goodDetailName {
   color: black;
   font-weight: 400;

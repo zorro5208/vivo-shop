@@ -10,13 +10,13 @@
     ></ly-tab>
     <div id="goods">
       <ul v-show="name">
-        <li v-for="(shop,index) in goodslist.rigth_data" :key="index" @click="goDetails(shop.id)">
+        <li v-for="(shop,index) in goodslist.PartsLower_data" :key="index" @click="goDetails(shop.id)">
           <a href="#">
-            <img v-lazy="shop.img">
+            <img v-lazy="shop.homeImg">
           </a>
-          <p>{{shop.name}}</p>
+          <p>{{shop.homeName}}</p>
           <p>
-          <span id="price">￥{{shop.Price}}</span>
+          <span id="price">￥{{shop.homePrice}}</span>
           </p>
         </li>
       </ul>
@@ -38,12 +38,10 @@ export default {
       bottomSelectedId: 0,
       items: [
         { label: "全部" },
-        { label: "Xplay系列" },
-        { label: "X系列" },
-        { label: "Y系列" },
-        { label: "I系列" },
-        { label: "Z系列" },
-        { label: "Q系列" }
+        { label: "充电器" },
+        { label: "保护膜" },
+        { label: "耳机音响" },
+        
       ],
       options: {
         activeColor: "#1d98bd"
@@ -58,7 +56,7 @@ export default {
   },
   methods: {
     qiehuan(index) {
-      // console.log(index);
+    //   console.log(index);
       var _this = this;
       _this.goodslist = _this.list[index];
     },
@@ -68,10 +66,10 @@ export default {
         url:
           "https://www.easy-mock.com/mock/5cf7b57bd166d82961e57e79/example/goodsdata"
       });
-      // console.log(data.data.data.classify.right);
+    //   console.log(data.data.data.parts.PartsLower);
 
       // //右边栏数据
-      this.list = data.data.data.classify.right;
+      this.list = data.data.data.parts.PartsLower;
       this.goodslist = this.list[0];
     },
     goDetails(id) {

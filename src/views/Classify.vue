@@ -60,7 +60,7 @@ export default {
       _this.rightList = _this.list[index];
 	},
 	goDetails(id) {
-      console.log(id);
+      // console.log(id);
       this.$router.push({
         path: "detail",
         query: { id: id }
