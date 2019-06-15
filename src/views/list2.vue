@@ -6,17 +6,20 @@
       :items="items"
       :options="options"
       @click.native="qiehuan(selectedId)"
-      
     ></ly-tab>
     <div id="goods">
       <ul v-show="name">
-        <li v-for="(shop,index) in goodslist.PartsLower_data" :key="index" @click="goDetails(shop.id)">
+        <li
+          v-for="(shop,index) in goodslist.PartsLower_data"
+          :key="index"
+          @click="goDetails(shop.id)"
+        >
           <a href="#">
             <img v-lazy="shop.homeImg">
           </a>
           <p>{{shop.homeName}}</p>
           <p>
-          <span id="price">￥{{shop.homePrice}}</span>
+            <span id="price">￥{{shop.homePrice}}</span>
           </p>
         </li>
       </ul>
@@ -32,7 +35,7 @@ export default {
     return {
       name: "全部",
       list: [],
-      classifyIndex:0,
+      classifyIndex: 0,
       goodslist: [],
       selectedId: 0,
       bottomSelectedId: 0,
@@ -40,8 +43,7 @@ export default {
         { label: "全部" },
         { label: "充电器" },
         { label: "保护膜" },
-        { label: "耳机音响" },
-        
+        { label: "耳机音响" }
       ],
       options: {
         activeColor: "#1d98bd"
@@ -51,12 +53,12 @@ export default {
   created() {
     this.getClassifyList();
     this.$store.state.isShowHeader = true;
-	  this.$store.state.isShowFooter = true;
+    this.$store.state.isShowFooter = true;
     this.$store.state.isTitle = "类目";
   },
   methods: {
     qiehuan(index) {
-    //   console.log(index);
+      //   console.log(index);
       var _this = this;
       _this.goodslist = _this.list[index];
     },
@@ -66,8 +68,7 @@ export default {
         url:
           "https://www.easy-mock.com/mock/5cf7b57bd166d82961e57e79/example/goodsdata"
       });
-    //   console.log(data.data.data.parts.PartsLower);
-
+      //   console.log(data.data.data.parts.PartsLower);
       // //右边栏数据
       this.list = data.data.data.parts.PartsLower;
       this.goodslist = this.list[0];
@@ -84,10 +85,8 @@ export default {
 </script>
 
 <style>
-a{
-  
+a {
   /* color: #007aff !important */
-
 }
 #goods {
   width: 100%;

@@ -22,11 +22,7 @@
           </div>
           <!-- 购物车商品数量 -->
           <div class="cartNumber">
-            <a
-              href="javascript:;"
-              class="add"
-              @click="reduce(index)"
-            >-</a>
+            <a href="javascript:;" class="add" @click="reduce(index)">-</a>
             <input type="text" class="input" v-model="goods.value">
             <a href="javascript:;" class="reduce" @click="add(index)">+</a>
             <a href="#">
@@ -43,18 +39,18 @@
         alt="购物车图片"
       >
       <h1>购物车是空的哦，快去购物吧</h1>
-      <router-link to='/classify'>逛一逛</router-link>
+      <router-link to="/classify">逛一逛</router-link>
     </div>
     <div class="cartFooter" v-if="carts.length">
       <div class="checkAll" @click="quanxuan()">
         <div class="select-area">
-              <label class="check-mark" v-show="!bChecked" ></label>
-			  <span>全选</span>
-            </div>
-            <div class="select-area">
-              <label class="check-mark" v-show="bChecked" style="background:#25b5fe"></label>
-			  <span>全选</span>
-            </div>
+          <label class="check-mark" v-show="!bChecked"></label>
+          <span>全选</span>
+        </div>
+        <div class="select-area">
+          <label class="check-mark" v-show="bChecked" style="background:#25b5fe"></label>
+          <span>全选</span>
+        </div>
       </div>
       <div class="Total">
         合计：
@@ -124,7 +120,7 @@ export default {
     }
   },
   methods: {
-	  ...mapMutations(["shanchu", "add", "reduce", "settlement"]),
+    ...mapMutations(["shanchu", "add", "reduce", "settlement"]),
     //点击选择
     danxuan(goods) {
       //   console.log(goods);
@@ -132,8 +128,8 @@ export default {
       if (!goods.danx1uan) {
         this.bChecked = false;
       }
-	},
-	quanxuan() {
+    },
+    quanxuan() {
       this.bChecked = !this.bChecked;
       if (this.bChecked) {
         this.$store.state.cartData.forEach(goods => {
@@ -144,8 +140,7 @@ export default {
           goods.danx1uan = false;
         });
       }
-    },
-    
+    }
   }
 };
 </script>
@@ -190,8 +185,8 @@ body {
   float: left;
   position: relative;
 }
-.checkAll .select-area span{
-	float: right
+.checkAll .select-area span {
+  float: right;
 }
 .checkAll .select-area .check-mark {
   width: 1rem;

@@ -12,8 +12,7 @@
         <div data-v-5c4d03d7 class="outer-box">
           <div data-v-5c4d03d7 class="country-area">国家地区</div>
           <router-link to="/choice" tag="a">
-            
-            <div data-v-5c4d03d7 class="country-box" @click="loading" >
+            <div data-v-5c4d03d7 class="country-box" @click="loading">
               {{this.$route.query.name}}
               <span class="mui-icon mui-icon-arrowdown"></span>
             </div>
@@ -134,7 +133,7 @@ export default Vue.extend({
       phone: "", //..输入的手机号码
       isPhone: false, //手机号开关
       isPass: false, //密码开关
-      isPCode: false, //手机验证码开关
+      isPCode: false //手机验证码开关
     };
   },
   created() {
@@ -143,7 +142,7 @@ export default Vue.extend({
   methods: {
     // 加载
     loading() {
-      this.isShow = false
+      this.isShow = false;
       Indicator.open({
         text: "加载中...",
         spinnerType: "fading-circle"
@@ -239,7 +238,7 @@ export default Vue.extend({
           dataType: "jsonp",
           success: function(obj) {
             console.log(obj);
-            setCookie("registerCode", registerCode, 60);//把验证码存到cookie
+            setCookie("registerCode", registerCode, 60); //把验证码存到cookie
           }
         });
 

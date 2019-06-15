@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { MessageBox } from 'mint-ui';
+import {
+    MessageBox
+} from 'mint-ui';
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
@@ -11,9 +13,9 @@ export default new Vuex.Store({
         cartData: localStorage["carts"] ? JSON.parse(localStorage["carts"]) : [],
         //缓存中有商品总价就读取,否则设置初始值为：0
         priceTotal: localStorage.priceTotal != undefined ? localStorage.priceTotal : 0,
-        isLogin:0,
-        token:'',
-        status:0
+        isLogin: 0,
+        token: '',
+        status: 0
     },
     mutations: {
         setCart(state, data) {
@@ -67,16 +69,15 @@ export default new Vuex.Store({
             localStorage.setItem("carts", JSON.stringify(state.cartData));
         },
         // 登录状态
-        changeLogin(state,status){
+        changeLogin(state, status) {
             state.isLogin = status
-            localStorage.setItem('isLogin',status)
+            localStorage.setItem('isLogin', status)
         },
         // 登录账号
-        getToken(state,status){
+        getToken(state, status) {
             state.token = status
-            localStorage.setItem('token',status)
+            localStorage.setItem('token', status)
         },
-        
     },
 
 })

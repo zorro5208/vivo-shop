@@ -6,17 +6,16 @@
       :items="items"
       :options="options"
       @click.native="qiehuan(selectedId)"
-      
     ></ly-tab>
-    <div id="goods" >
-      <ul v-show="name" >
+    <div id="goods">
+      <ul v-show="name">
         <li v-for="(shop,index) in goodslist.rigth_data" :key="index" @click="goDetails(shop.id)">
           <a href="#">
             <img v-lazy="shop.img">
           </a>
           <p>{{shop.name}}</p>
           <p>
-          <span id="price">￥{{shop.price}}</span>
+            <span id="price">￥{{shop.price}}</span>
           </p>
         </li>
       </ul>
@@ -32,7 +31,7 @@ export default {
     return {
       name: "全部",
       list: [],
-      classifyIndex:0,
+      classifyIndex: 0,
       goodslist: [],
       selectedId: 0,
       bottomSelectedId: 0,
@@ -53,7 +52,7 @@ export default {
   created() {
     this.getClassifyList();
     this.$store.state.isShowHeader = true;
-	  this.$store.state.isShowFooter = true;
+    this.$store.state.isShowFooter = true;
     this.$store.state.isTitle = "类目";
   },
   methods: {
@@ -86,10 +85,8 @@ export default {
 </script>
 
 <style>
-a{
-  
+a {
   /* color: #007aff !important */
-
 }
 #goods {
   width: 100%;

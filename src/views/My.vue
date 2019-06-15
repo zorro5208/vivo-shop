@@ -270,7 +270,6 @@ export default {
   }
 
   .container-con {
-
     .con {
       width: 100%;
       height: 45px;

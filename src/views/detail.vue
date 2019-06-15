@@ -149,7 +149,7 @@ export default {
       Toast({
         message: "加入购物车成功！",
         iconClass: "iconfont icon-goumaichenggong-copy",
-        duration: 950
+        duration: 1000
       });
     }
   },

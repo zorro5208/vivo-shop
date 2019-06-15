@@ -14,9 +14,9 @@ Vue.use(MintUI)
 Vue.config.productionTip = false
 
 new Vue({
-	el:'#app',
+	el: '#app',
 	router,
 	store,
-  	render: h => h(Home),
-	
+	render: h => h(Home),
+
 })

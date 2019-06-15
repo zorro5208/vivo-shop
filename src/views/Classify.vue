@@ -1,7 +1,7 @@
 <template>
   <div id="sort">
     <div class="calssify-con">
-      <div class="calssify-left" >
+      <div class="calssify-left">
         <ul class="calssify-left-ul">
           <li
             v-for="(list,index) in leftList"
@@ -11,7 +11,7 @@
           >{{list.name}}</li>
         </ul>
       </div>
-      <div class="calssify-rigth" >
+      <div class="calssify-rigth">
         <ul class="calssify-right-ul">
           <li v-for="(list,index) in rightList.rigth_data" :key="index" @click="goDetails(list.id)">
             <img v-lazy="list.img">
@@ -47,7 +47,7 @@ export default {
         url:
           "https://www.easy-mock.com/mock/5cf7b57bd166d82961e57e79/example/goodsdata"
       });
-    //   console.log(data.data.data.classify.right);
+      //   console.log(data.data.data.classify.right);
       //左边栏数据
       this.leftList = data.data.data.classify.left;
       //右边栏数据
@@ -58,8 +58,8 @@ export default {
       var _this = this;
       _this.classifyIndex = index;
       _this.rightList = _this.list[index];
-	},
-	goDetails(id) {
+    },
+    goDetails(id) {
       // console.log(id);
       this.$router.push({
         path: "detail",
@@ -69,8 +69,8 @@ export default {
   },
   created() {
     this.getClassifyList();
-	this.$store.state.isShowHeader = true;
-	this.$store.state.isShowFooter = true;
+    this.$store.state.isShowHeader = true;
+    this.$store.state.isShowFooter = true;
     this.$store.state.isTitle = "全部分类";
   }
 };
@@ -132,7 +132,7 @@ export default {
   width: 90px;
   display: block;
   margin: auto;
-  background-color:#f7f7f7e1;
+  background-color: #f7f7f7e1;
 }
 .calssify-rigth ul li span {
   color: #999;

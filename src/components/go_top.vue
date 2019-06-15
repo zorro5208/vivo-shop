@@ -1,5 +1,5 @@
 <template>
-<!-- 回到顶部 -->
+  <!-- 回到顶部 -->
   <div class="go-top">
     <div class="box">
       <span class="mui-icon-extra mui-icon-extra-top" @click="goTop" ref="btn"></span>

@@ -40,43 +40,59 @@
     <div id="nav">
       <ul>
         <li>
-          <router-link to='/list' tag='a'>
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200727214479_original.png">
+          <router-link to="/list" tag="a">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200727214479_original.png"
+            >
           </router-link>
         </li>
         <li>
-          <router-link to='/list2' tag='a'>
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/201807022008414677_original.png">
+          <router-link to="/list2" tag="a">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/201807022008414677_original.png"
+            >
           </router-link>
         </li>
         <li>
-          <router-link to='/list2' tag='a'>
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200936862132_original.png">
+          <router-link to="/list2" tag="a">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200936862132_original.png"
+            >
           </router-link>
         </li>
         <li>
-          <router-link to='/classify' tag='a'>
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201232196764_original.png">
+          <router-link to="/classify" tag="a">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201232196764_original.png"
+            >
           </router-link>
         </li>
         <li>
           <a href="#">
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201253660719_original.png">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201253660719_original.png"
+            >
           </a>
         </li>
         <li>
           <a href="#">
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201317652288_original.png">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201317652288_original.png"
+            >
           </a>
         </li>
         <li>
           <a href="#">
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201352559447_original.png">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702201352559447_original.png"
+            >
           </a>
         </li>
         <li>
           <a href="#">
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/2018070220141024770_original.png">
+            <img
+              src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/2018070220141024770_original.png"
+            >
           </a>
         </li>
       </ul>
@@ -179,7 +195,7 @@ export default {
       this.getGoodsList();
       console.log(121);
     },
-   
+
     async getGoodsList() {
       const { g, p } = axios;
       const data2 = await g({
@@ -223,7 +239,6 @@ img[lazy="loading"] {
   height: 105px;
   width: 65%;
   margin: auto;
-  
 }
 #main {
   overflow: hidden;
@@ -270,7 +285,6 @@ img[lazy="loading"] {
 #nav ul li img {
   height: 55px;
   width: 55px;
-  
 }
 #nav ul li p {
   font-size: 12px;
@@ -316,7 +330,7 @@ img[lazy="loading"] {
 #goods ul li img {
   height: 105px;
   width: 65%;
-  background-color:#f7f7f7e1;
+  background-color: #f7f7f7e1;
 }
 #goods ul li p {
   margin-bottom: 0px;
