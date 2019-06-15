@@ -216,7 +216,7 @@ export default Vue.extend({
         // 发送短信的接口
 
         //短信模板Id（需要申请，详情看上面申请步骤）
-        var $model_Id = "158579";
+        var $model_Id = "158043";
         //您的验证码是#code# 随机的6位数
         var $tpl_value = "%23code%23%3D" + this.numRandom();
         //截取后面6位数验证码
@@ -226,7 +226,7 @@ export default Vue.extend({
         );
         // console.log($tpl_value,code)
         //获取AppKey（需要申请）
-        var $AppKey = "47fd7a0f19956bca07adb53e4c3bccb8";
+        var $AppKey = "4b8ffc2250ee865b433bae234a8954ac";
         // 请求接口
         $.get({
           url: "http://v.juhe.cn/sms/send",
