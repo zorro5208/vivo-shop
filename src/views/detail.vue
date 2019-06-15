@@ -57,8 +57,8 @@
             <div class="left">
               <div class="cart">
                 <div class="cartlength">{{cartNum}}</div>
-                <router-link to='/cart'>
-                <span>购物车</span>
+                <router-link to="/cart">
+                  <span>购物车</span>
                 </router-link>
               </div>
               <div class="collection">
@@ -82,6 +82,7 @@
         </li>
       </ul>
     </div>
+    <Top></Top>
   </div>
 </template>
 <script>
@@ -89,6 +90,7 @@ import Vue from "vue";
 import axios from "../lib/axios";
 import { Toast, Indicator } from "mint-ui";
 import { mapGetters, mapMutations } from "vuex";
+import Top from "../components/go_top.vue";
 export default {
   data() {
     return {
@@ -97,10 +99,12 @@ export default {
       selected: "tab-container1",
       cartlength: 0,
       carts: {},
-      cartNum:0
+      cartNum: 0
     };
   },
- 
+  components: {
+    Top
+  },
   methods: {
     show() {
       this.isShow = !this.isShow;
@@ -132,27 +136,26 @@ export default {
     // 点击按钮时，首先判断该商品是否在购物车已存在，如果存在则不再加入
     addCart(data) {
       this.carts = {
-          id: data.id,
-          name: data.homeName,
-          price: data.homePrice,
-          value: data.homeValue,
-          img: data.homeImg,
-          danx1uan: ""
-        };
-        this.cartNum = data.homeValue
-        this.$store.commit("setCart", this.carts);
-        // this.cartlength = this.$store.state.carts.length;
-        Toast({
-          message: "加入购物车成功！",
-          iconClass: "iconfont icon-goumaichenggong-copy",
-          duration: 950
-        });
-    
+        id: data.id,
+        name: data.homeName,
+        price: data.homePrice,
+        value: data.homeValue,
+        img: data.homeImg,
+        danx1uan: ""
+      };
+      this.cartNum = data.homeValue;
+      this.$store.commit("setCart", this.carts);
+      // this.cartlength = this.$store.state.carts.length;
+      Toast({
+        message: "加入购物车成功！",
+        iconClass: "iconfont icon-goumaichenggong-copy",
+        duration: 950
+      });
     }
   },
   created() {
     this.getgoodsList();
-    
+
     this.$store.state.isShowHeader = true;
     this.$store.state.isShowFooter = false;
     this.$store.state.isTitle = "商品详情";

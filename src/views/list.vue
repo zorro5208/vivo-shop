@@ -8,15 +8,15 @@
       @click.native="qiehuan(selectedId)"
       
     ></ly-tab>
-    <div id="goods">
-      <ul v-show="name">
+    <div id="goods" >
+      <ul v-show="name" >
         <li v-for="(shop,index) in goodslist.rigth_data" :key="index" @click="goDetails(shop.id)">
           <a href="#">
             <img v-lazy="shop.img">
           </a>
           <p>{{shop.name}}</p>
           <p>
-          <span id="price">￥{{shop.Price}}</span>
+          <span id="price">￥{{shop.price}}</span>
           </p>
         </li>
       </ul>

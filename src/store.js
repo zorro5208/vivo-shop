@@ -11,16 +11,18 @@ export default new Vuex.Store({
         cartData: localStorage["carts"] ? JSON.parse(localStorage["carts"]) : [],
         //缓存中有商品总价就读取,否则设置初始值为：0
         priceTotal: localStorage.priceTotal != undefined ? localStorage.priceTotal : 0,
+        isLogin:0,
+        token:'',
+        status:0
     },
     mutations: {
         setCart(state, data) {
-            console.log(data)
-            state.cartData = localStorage.cart != undefined ? JSON.parse(localStorage.cart) : [];
+            // console.log(data)
+            state.cartData = localStorage.carts != undefined ? JSON.parse(localStorage.carts) : [];
             state.priceTotal = parseFloat(localStorage.priceTotal).toFixed(2);
             if (data.id != '' && data.id > 0) {
                 let existGid = false,
-                    priceTotal = 0,
-                    aFreight = [];
+                    priceTotal = 0
                 for (let i = 0; i < state.cartData.length; i++) {
                     //如果购物车商品有重复修改数量和价格
                     if (data.id == state.cartData[i].id) {
@@ -39,7 +41,7 @@ export default new Vuex.Store({
                     priceTotal += (state.cartData[i].price * state.cartData[i].value);
                 }
                 state.priceTotal = priceTotal.toFixed(2);
-                localStorage.cart = JSON.stringify(state.cartData);
+                localStorage.carts = JSON.stringify(state.cartData);
                 localStorage.priceTotal = priceTotal.toFixed(2);
             }
         },
@@ -57,12 +59,24 @@ export default new Vuex.Store({
             MessageBox.confirm('确定删除该商品么？').then(action => {
                 state.cartData.splice(index, 1)
                 localStorage.setItem("carts", JSON.stringify(state.cartData));
+                state.isShowFooter = true
             })
         },
         settlement: (state, data) => {
             state.cartData = [];
             localStorage.setItem("carts", JSON.stringify(state.cartData));
         },
+        // 登录状态
+        changeLogin(state,status){
+            state.isLogin = status
+            localStorage.setItem('isLogin',status)
+        },
+        // 登录账号
+        getToken(state,status){
+            state.token = status
+            localStorage.setItem('token',status)
+        },
+        
     },
 
 })

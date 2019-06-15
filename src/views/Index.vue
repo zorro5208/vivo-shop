@@ -149,7 +149,7 @@
         </li>
       </ul>
       <p class="more">
-        <a href="#">更多精品配件></a>
+        <router-link to="/list2" tag="a">更多精品配件></router-link>
       </p>
     </div>
     <Top></Top>
@@ -223,6 +223,7 @@ img[lazy="loading"] {
   height: 105px;
   width: 65%;
   margin: auto;
+  
 }
 #main {
   overflow: hidden;
@@ -269,6 +270,7 @@ img[lazy="loading"] {
 #nav ul li img {
   height: 55px;
   width: 55px;
+  
 }
 #nav ul li p {
   font-size: 12px;
@@ -314,6 +316,7 @@ img[lazy="loading"] {
 #goods ul li img {
   height: 105px;
   width: 65%;
+  background-color:#f7f7f7e1;
 }
 #goods ul li p {
   margin-bottom: 0px;

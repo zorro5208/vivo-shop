@@ -138,7 +138,8 @@ export default Vue.extend({
         });
         console.log(data);
         if (data.data.code == 200) {
-          setCookie("phone", this.phone, 1000 * 60);
+          this.$store.commit("changeLogin",1);
+          this.$store.commit("getToken",this.phone);
           this.$router.push({ path: "/" });
         } else {
           // 账号或密码错误

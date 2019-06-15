@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <div class="cartMain">
+    <div class="cartMain" v-if="carts.length">
       <ul>
         <li v-for="(goods,index) in cartData" :key="index">
           <!-- 购物车单选 -->
@@ -96,7 +96,6 @@ export default {
     carts() {
       return this.$store.state.cartData;
     },
-    ...mapGetters(["this.$store.state.cartData"]),
     sum: function() {
       var sum = 0;
       this.$store.state.cartData.forEach(goods => {
@@ -118,8 +117,11 @@ export default {
   },
   created() {
     this.$store.state.isShowHeader = true;
-    this.$store.state.isShowFooter = false;
+    this.$store.state.isShowFooter = true;
     this.$store.state.isTitle = "购物车";
+    if (this.carts.length) {
+      this.$store.state.isShowFooter = false;
+    }
   },
   methods: {
 	  ...mapMutations(["shanchu", "add", "reduce", "settlement"]),

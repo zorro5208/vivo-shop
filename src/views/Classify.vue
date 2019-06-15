@@ -132,6 +132,7 @@ export default {
   width: 90px;
   display: block;
   margin: auto;
+  background-color:#f7f7f7e1;
 }
 .calssify-rigth ul li span {
   color: #999;

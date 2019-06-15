@@ -12,16 +12,16 @@
 		<mt-button @click.native="show" icon="more" slot="right"></mt-button>
 		</mt-header>
 		<ul class="list" v-show="isShow">
-			<li><a href="#"><i class="iconfont icon-daohanggouwuche"></i> 购物车</a></li>
-			<li><a href="#"><i class="iconfont icon-icon-test"></i> 我的订单</a></li>
-			<li><a href="#"><i class="iconfont icon-shouye"></i> 我的商城</a></li>
-			<li><a href="#"><i class="iconfont icon-weibiaoti2fuzhi12"></i> 账号中心</a></li>
+			<li @click="show"><router-link to="/cart" ><i class="iconfont icon-daohanggouwuche"></i> 购物车</router-link></li>
+			<li @click="show"><router-link to='/' tag="a"><i class="iconfont icon-icon-test"></i> 我的订单</router-link></li>
+			<li @click="show"><router-link to='/index' tag="a"><i class="iconfont icon-shouye"></i> 我的商城</router-link></li>
+			<li @click="show"><router-link to="/my"><i class="iconfont icon-weibiaoti2fuzhi12"></i> 账号中心</router-link></li>
 		</ul>
 	</div>
     <!--内容-->
-	
+	<transition>
     <router-view style="padding-bottom: 50px"></router-view>
-
+	</transition>
     <!--底部-->
     <nav class="mui-bar mui-bar-tab" v-if="isShowFooter">
       <router-link to="/index" tag="a" class="mui-tab-item">
@@ -88,6 +88,10 @@ export default {
   padding: 0;
   margin: 0;
 }
+#app{
+  width: 100%;
+  overflow-x: hidden;
+}
 .head{
 	height: 50px;
 	position: relative;
@@ -110,5 +114,18 @@ export default {
 .head .list li a{
 	font-size: 14px;
 	color: black
+}
+.v-enter{
+  opacity: 0;
+  transform: translateX(100%)
+}
+.v-leave-to{
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
+}
+.v-enter-active,
+.v-leave-active{
+  transition: all 0.5s ease
 }
 </style>

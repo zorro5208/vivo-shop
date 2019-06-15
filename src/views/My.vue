@@ -1,22 +1,28 @@
 <template>
   <div class="container">
     <div class="container-bj">
-      <img src="../assets/img/tou.jpg">
-      <span>Myfwk</span>
+      <router-link to="/login" tag="div">
+        <p>
+          <img src="../assets/img/tou.jpg">
+        </p>
+        <p>
+          <span>{{uname}}</span>
+        </p>
+      </router-link>
       <p>不要被人言左右，要相信自己的判断</p>
     </div>
 
     <div class="container-integral">
       <p>
-        <span>0</span>
+        <span>5</span>
         <span>优惠券</span>
       </p>
       <p>
-        <span>0</span>
+        <span>2</span>
         <span>换鼓励金</span>
       </p>
       <p>
-        <span>{{jifeng}}</span>
+        <span>0</span>
         <span>积分</span>
       </p>
     </div>
@@ -27,8 +33,8 @@
         <p class="right">全部订单 ></p>
       </div>
       <div class="container-order-2">
-        <p class v-for="(list,index) in container" :key='index'>
-          <img :src="list.img">
+        <p class v-for="(list,index) in container" :key="index">
+          <img :src="list.img" alt>
           <span>{{list.name}}</span>
         </p>
       </div>
@@ -37,50 +43,50 @@
     <div class="container-con" id="transition">
       <router-link to="/MyCollection" class="con">
         <div class="con-left">
-          <i class="iconfont icon-collection"></i>
+          <span class="mui-icon mui-icon-star-filled"></span>
           <span>我的收藏</span>
         </div>
         <div class="con-rigth">
-          <i class="iconfont icon-youjiantou"></i>
+          <span class="mui-icon mui-icon-forward"></span>
         </div>
       </router-link>
 
       <router-link to="/address" class="con" id="transition">
         <div class="con-left">
-          <i class="iconfont icon-gouwuche"></i>
+          <span class="mui-icon-extra mui-icon-extra-express"></span>
           <span>我的收货地址</span>
         </div>
         <div class="con-rigth">
-          <i class="iconfont icon-youjiantou"></i>
+          <span class="mui-icon mui-icon-forward"></span>
         </div>
       </router-link>
 
       <router-link to="/cart" class="con" id="transition">
         <div class="con-left">
-          <i class="iconfont icon-gouwuche"></i>
+          <span class="mui-icon-extra mui-icon-extra-cart"></span>
           <span>我的购物车</span>
         </div>
         <div class="con-rigth">
-          <i class="iconfont icon-youjiantou"></i>
+          <span class="mui-icon mui-icon-forward"></span>
         </div>
       </router-link>
 
       <router-link to="/order" class="con">
         <div class="con-left">
-          <i class="iconfont icon-share_icon"></i>
+          <span class="mui-icon-extra mui-icon-extra-sweep"></span>
           <span>扫码分享</span>
         </div>
         <div class="con-rigth">
-          <i class="iconfont icon-youjiantou"></i>
+          <span class="mui-icon mui-icon-forward"></span>
         </div>
       </router-link>
-      <a target="_blank" href="http://www.myfwk.cn" class="con">
+      <a href="##" class="con" v-show="isShow" @click="out">
         <div class="con-left">
-          <i class="iconfont icon-bangzhuguanyuwomen"></i>
-          <span>关于我</span>
+          <span class="mui-icon mui-icon-personadd"></span>
+          <span>退出登录</span>
         </div>
         <div class="con-rigth">
-          <i class="iconfont icon-youjiantou"></i>
+          <span class="mui-icon mui-icon-forward"></span>
         </div>
       </a>
     </div>
@@ -88,32 +94,55 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { delCookie, getCookie } from "../lib/cookie.js";
 export default {
   name: "Mycontainer",
   data() {
     return {
       container: [
         {
-          img: "../assets/img/111.png",
+          img: require("../assets/img/111.png"),
           name: "待付款"
         },
         {
-          img: "../assets/img/222.png",
+          img: require("../assets/img/222.png"),
           name: "待收货"
         },
         {
-          img: "../assets/img/333.png",
+          img: require("../assets/img/333.png"),
           name: "待评价"
         },
         {
-          img: "../assets/img/444.png",
+          img: require("../assets/img/444.png"),
           name: "退货/退款"
         }
-      ]
+      ],
+      isShow: 0,
+      uname: "登录/注册"
     };
   },
-  
+  created() {
+    this.$store.state.isShowHeader = true;
+    this.$store.state.isShowFooter = true;
+    this.$store.state.isTitle = "个人中心";
+  },
+  mounted() {
+    /*页面挂载获取cookie，如果存在uname的cookie，不需登录*/
+    if (localStorage.getItem("token")) {
+      this.uname = localStorage.getItem("token");
+      this.isShow = localStorage.getItem("isLogin");
+    }
+  },
+  methods: {
+    // 退出登录
+    out() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("isLogin");
+      this.$store.state.isLogin = 0;
+      this.$store.state.token = "";
+      this.$router.push("/login");
+    }
+  }
 };
 </script>
 
@@ -121,36 +150,41 @@ export default {
 <style lang="stylus" scoped>
 .container-order {
   width: 100%;
-  height: 56px;
+  height: 125px;
   background: white;
   display: block;
-  margin-bottom: 2.4px;
-  margin-top: 2.4px;
-  font-size: 5.6px;
+  margin-top: 10px;
+  font-size: 12px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
 
   .container-order-1 {
     width: 100%;
-    height: 24px;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
 
     .left {
       float: left;
       display: block;
       line-height: 24px;
-      margin-left: 8px;
-      font-size: 6.4px;
+      margin-left: 20px;
+      font-size: 14px;
+      color: #333;
     }
 
     .right {
       float: right;
       line-height: 24px;
-      margin-right: 9.6px;
-      font-size: 6.4px;
+      margin-right: 20px;
+      font-size: 14px;
+      color: #333;
     }
   }
 
   .container-order-2 {
     width: 100%;
-    height: 24px;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,14 +196,15 @@ export default {
       margin-top: 4.8px;
 
       img {
-        width: 12.8px;
-        height: 12.8px;
+        width: 30px;
+        height: 30px;
         margin: auto;
       }
 
       span {
         text-align: center;
-        padding-top: 4.8px;
+        padding-top: 10px;
+        color: #333;
       }
     }
   }
@@ -181,13 +216,11 @@ export default {
 
 .container {
   width: 100%;
-  height: 240px;
-  position: absolute;
-  top: 50px;
+  overflow: hidden;
 
   .container-bj {
     width: 100%;
-    height: 100%;
+    height: 190px;
     background: url('../assets/img/bj.png') no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -209,59 +242,67 @@ export default {
     p {
       font-size: 14px;
       color: #ffffff;
+      text-align: center;
     }
   }
 
   .container-integral {
     width: 100%;
-    height: 32px;
+    height: 60px;
     background: #ffffff;
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid #ccc;
 
     p {
       width: 33%;
       height: 100%;
-      font-size: 5.76px;
-      line-height: 9.6px;
+      font-size: 14px;
+      line-height: 20px;
       font-weight: 500;
       float: left;
       display: flex;
       flex-direction: column;
       text-align: center;
+      color: #333;
       justify-content: center;
     }
   }
 
   .container-con {
-    margin-bottom: 23.2px;
 
     .con {
       width: 100%;
-      height: 22.56px;
+      height: 45px;
       background: #ffffff;
-      border-bottom: 0.0625rem solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
       display: block;
 
       .con-left {
         float: left;
-        line-height: 20.8px;
-        padding-left: 7.52px;
+        line-height: 44px;
+        padding-left: 15px;
 
-        i {
-          font-size: 8px;
+        .mui-icon {
+          font-size: 22px;
+        }
+
+        .mui-icon-extra {
+          font-size: 18px;
         }
 
         span {
-          font-size: 5.92px;
-          padding-left: 1.6px;
+          font-size: 14px;
+          padding-left: 5px;
+          color: #333;
         }
       }
 
       .con-rigth {
         float: right;
-        line-height: 20.8px;
-        padding-right: 6.4px;
+        line-height: 44px;
+        padding-right: 15px;
+        color: #333;
       }
     }
   }
