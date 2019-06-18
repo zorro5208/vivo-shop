@@ -131,7 +131,7 @@ export default Vue.extend({
         const { g, p } = axios;
         const data = await g({
           url:
-            "https://www.apiopen.top/login?key=00d91e8e0cca2b76f515926a36db68f5&phone=" +
+            "/api/login?key=00d91e8e0cca2b76f515926a36db68f5&phone=" +
             this.phone +
             "&passwd=" +
             this.password
